@@ -1,5 +1,7 @@
 package com.deepakshankar.myapplication.model;
 
+import java.io.Serializable;
+
 /**
  * This is a class used to store the products returned from the Zappos API.
  * Created by Deepak Shankar on 1/25/2017.
@@ -8,7 +10,7 @@ package com.deepakshankar.myapplication.model;
  * @version 1.0
  */
 
-public class Product {
+public class Product implements Serializable {
 
     private String brandName;
     private String thumbnailImageUrl;

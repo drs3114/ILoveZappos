@@ -5,4 +5,8 @@ package com.deepakshankar.myapplication.service;
  */
 
 public class ZapposAPIService {
+    private String searchTerm;
+    private String apiKey;
+    private String uri;
+
 }
