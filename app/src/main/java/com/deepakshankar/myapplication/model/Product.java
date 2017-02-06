@@ -167,11 +167,18 @@ public class Product implements Serializable {
         return productName;
     }
 
+
+
     /**
      *
      * @param productName
      */
     public void setProductName(String productName) {
         this.productName = productName;
+    }
+
+    @Override
+    public String toString() {
+        return this.productName;
     }
 }

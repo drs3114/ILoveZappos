@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 
 import android.widget.EditText;
+import android.widget.ProgressBar;
 
 import com.deepakshankar.myapplication.R;
 import com.deepakshankar.myapplication.controllers.rest.RestController;
@@ -26,7 +27,7 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         //setSupportActionBar();
-        getActionBar().setTitle("Search Zappos!");
+
         setContentView(R.layout.activity_search);
     }
 
@@ -48,7 +49,7 @@ public class SearchActivity extends AppCompatActivity {
         }
         else{
             Log.d("SearchActivity","Result Found Total: "+result.getTotalResultCount());
-            Intent listIntent = new Intent(getBaseContext(),ListActivity.class);
+            Intent listIntent = new Intent(getBaseContext(),ProductViewActivity.class);
         listIntent.putExtra("zapposResults",result);
 
         startActivity(listIntent);
@@ -63,7 +64,7 @@ public class SearchActivity extends AppCompatActivity {
         @Override
         protected Result doInBackground(String... params) {
             String term = params[0];
-            result=restController.start(term);
+            result=restController.fetch(term);
             return result;
         }
 

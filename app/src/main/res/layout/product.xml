@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -10,6 +9,7 @@
     </data>
 
     <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/content_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,30 +17,6 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context="com.deepakshankar.myapplication.activities.ProductViewActivity"
         tools:showIn="@layout/activity_product_view">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="422dp"
-            android:orientation="vertical">
-
-            <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            </ListView>
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/productImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="93dp"
-            android:scaleType="fitCenter"
-             />
 
         <TextView
             android:id="@+id/productName"
@@ -50,59 +26,74 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="33dp"
             android:fontFamily="sans-serif"
-            android:text="@{product.brandName+` `+product.productName}"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="30sp"
+            android:textStyle="normal|bold"
             android:typeface="sans"
-            android:textStyle="normal|bold" />
+            />
+
+        <ImageView
+            android:id="@+id/productImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="93dp"
+            android:scaleType="fitCenter" />
+
 
         <TextView
-            android:text="@{product.originalPrice}"
+            android:id="@+id/originalPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:id="@+id/originalPrice"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:textAlignment="center"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:text="@{`Original Price: `+product.originalPrice}"/>
 
         <TextView
-            android:text="@{product.percentOff}"
+            android:id="@+id/discount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/originalPrice"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="33dp"
-            android:id="@+id/discount"
-            android:textAlignment="center"
-            android:textSize="24sp" />
-
-        <Button
-            android:text="Click to buy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/productBuyButton"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            tools:text="Click to buy"
-            android:background="@android:color/holo_green_dark"
-            android:elevation="14dp" />
-
-        <TextView
-            android:text="@{product.price}"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="33dp"
-            android:id="@+id/productPrice"
             android:textAlignment="center"
             android:textSize="24sp"
-            android:layout_below="@+id/discount"
+            android:text="@{`Discount: `+product.percentOff}"/>
+
+
+
+        <TextView
+            android:id="@+id/productPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/discount"
+            android:layout_marginTop="33dp"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:text="@{`Price: `+product.price}"/>
+
+        <Button
+            android:id="@+id/productBuyButton"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="14dp"
+            android:text="Click to buy"
+            android:visibility="visible"
+            tools:text="Click to buy"
+            android:layout_marginBottom="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:onClick="goToBuy"/>
 
     </RelativeLayout>
 </layout>

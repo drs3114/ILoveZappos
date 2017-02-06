@@ -3,6 +3,7 @@
     package="com.deepakshankar.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -10,14 +11,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".SpashScreenActivity">
+        <meta-data
+            android:name="com.google.android.nearby.messages.API_KEY"
+            android:value="AIzaSyBy0Vpjuyegu0ekMKFOiabphjamYmuB1n0" />
+
+        <activity android:name=".activities.SpashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SearchActivity">
+        <activity android:name=".activities.SearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,13 +30,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ListActivity"
+            android:name=".activities.ProductViewActivity"
             android:label="@string/title_activity_list"
-            android:parentActivityName=".SearchActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar.NoActionBar">
+            android:parentActivityName=".activities.SearchActivity"
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.deepakshankar.myapplication.SearchActivity" />
+                android:value="com.deepakshankar.myapplication.activities.SearchActivity" />
         </activity>
     </application>
 
