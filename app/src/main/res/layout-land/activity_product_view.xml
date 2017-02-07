@@ -1,0 +1,47 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="product"
+            type="com.deepakshankar.myapplication.model.Product"/>
+    </data>
+    <android.support.design.widget.CoordinatorLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context="com.deepakshankar.myapplication.activities.ProductViewActivity">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/Theme.AppCompat.Light.NoActionBar.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <include android:id="@+id/nestedProductLayout" layout="@layout/product"
+            bind:product="@{product}"></include>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_margin="@dimen/fab_margin"
+            app:layout_anchor="@+id/nestedProductLayout"
+            app:srcCompat="@drawable/ic_zappos_cart"
+            app:layout_anchorGravity="center_vertical|right"
+            app:fabSize="normal" />
+
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

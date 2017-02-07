@@ -3,15 +3,18 @@ package com.deepakshankar.myapplication.activities;
 import android.content.Intent;
 
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
-import android.os.Build;
+
 import android.os.Bundle;
+
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
 import android.text.Html;
+
 import android.view.View;
+
 import android.widget.ImageView;
 
 import com.deepakshankar.myapplication.R;
@@ -22,6 +25,11 @@ import com.deepakshankar.myapplication.model.Result;
 
 import java.util.List;
 
+/**
+ * This is the activity class that is used to display the first item from the search results.
+ * @author Deepak Ravi Shankar
+ * @version 1.0
+ */
 public class ProductViewActivity extends AppCompatActivity {
 
     List<Product> products;
@@ -39,40 +47,45 @@ public class ProductViewActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         Result result = (Result) bundle.getSerializable("zapposResults");
         products = result.getResults();
-        product = products.get(0);
+        if (products == null || products.size() == 0) {
 
+            product = new Product();
+            product.setBrandName("Your search Resulted ");
+            product.setProductName(""+products.size()+" results!");
+            product.setPrice("");
+            product.setThumbnailImageUrl("");
+            product.setPercentOff("");
+            product.setOriginalPrice("");
+            product.setPrice("");
+        } else {
+            product = products.get(0);
 
-        productViewBinding = DataBindingUtil.setContentView(this,R.layout.activity_product_view);
+        }
+        productViewBinding = DataBindingUtil.setContentView(this, R.layout.activity_product_view);
         productViewBinding.setProduct(product);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Search Zappos!");
         setSupportActionBar(toolbar);
 
 
-        productViewBinding.nestedProductLayout.productName.setText(Html.fromHtml(product.getBrandName()+" "+product.getProductName(), Build.VERSION.SDK_INT));
+        productViewBinding.nestedProductLayout.productName.setText(Html.fromHtml(product.getBrandName() + " " + product.getProductName()));
 
-        ImageView imageView = (ImageView) findViewById(R.id.productImage);
-        imageController = new PicassoImageController(this, imageView, product.getThumbnailImageUrl());
-        imageController.loadImage();
-
-
+        if (products != null && products.size() > 0) {
+            ImageView imageView = (ImageView) findViewById(R.id.productImage);
+            imageController = new PicassoImageController(this, imageView, product.getThumbnailImageUrl());
+            imageController.loadImage();
+        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-            });
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
-
-    public void goToBuy(View view){
-        Uri uri = Uri.parse(product.getProductUrl());
-        Intent webPageIntent = new Intent(Intent.ACTION_VIEW,uri);
-        startActivity(webPageIntent);
     }
 
 }

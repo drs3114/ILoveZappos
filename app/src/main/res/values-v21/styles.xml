@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="Theme.AppCompat.DayNight.NoActionBar.NoActionBar">
+    <style name="Theme.AppCompat.DayNight.NoActionBar.NoActionBar" parent="Theme.AppCompat.Light">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>

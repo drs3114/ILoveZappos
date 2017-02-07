@@ -29,7 +29,7 @@
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="30sp"
+            android:textSize="10sp"
             android:textStyle="normal|bold"
             android:typeface="sans"
             />
@@ -79,21 +79,6 @@
             android:textAlignment="center"
             android:textSize="24sp"
             android:text="@{`Price: `+product.price}"/>
-
-        <Button
-            android:id="@+id/productBuyButton"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="14dp"
-            android:text="Click to buy"
-            android:visibility="visible"
-            tools:text="Click to buy"
-            android:layout_marginBottom="45dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:textAlignment="center"
-            android:onClick="goToBuy"/>
 
     </RelativeLayout>
 </layout>

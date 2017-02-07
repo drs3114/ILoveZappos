@@ -19,14 +19,16 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <EditText android:id="@+id/search_term"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/search_term"
-        android:inputType="text"
-        android:layout_alignBottom="@+id/search_btn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="106dp" />
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/appIcon"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="95dp"
+        android:layout_marginStart="95dp" />
 
     <Button
         android:text="@string/search_btn"
@@ -34,17 +36,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/search_btn"
         android:onClick="searchZappos"
-        android:layout_marginBottom="129dp"
-        android:layout_alignParentBottom="true"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/appIcon"
         android:layout_centerHorizontal="true" />
 
-    <ImageView
+    <EditText android:id="@+id/search_term"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:id="@+id/appIcon"
-        android:layout_above="@+id/search_term"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="28dp" />
+        android:hint="@string/search_term"
+        android:inputType="text"
+        android:layout_alignTop="@+id/appIcon"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

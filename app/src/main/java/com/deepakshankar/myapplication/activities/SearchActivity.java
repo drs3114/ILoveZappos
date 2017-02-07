@@ -6,11 +6,13 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.deepakshankar.myapplication.R;
 import com.deepakshankar.myapplication.controllers.rest.RestController;
@@ -29,6 +31,9 @@ public class SearchActivity extends AppCompatActivity {
         //setSupportActionBar();
 
         setContentView(R.layout.activity_search);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Search Zappos!");
+        setSupportActionBar(toolbar);
     }
 
     public void searchZappos(View view)  {
@@ -44,15 +49,14 @@ public class SearchActivity extends AppCompatActivity {
         }
 
         if(result==null){
-            Log.d("SearchActivity","Result Not found");
-
+            Toast.makeText(this,"No results Found!",Toast.LENGTH_LONG).show();
         }
         else{
             Log.d("SearchActivity","Result Found Total: "+result.getTotalResultCount());
-            Intent listIntent = new Intent(getBaseContext(),ProductViewActivity.class);
-        listIntent.putExtra("zapposResults",result);
+            Intent productViewIntent = new Intent(getBaseContext(),ProductViewActivity.class);
+            productViewIntent.putExtra("zapposResults",result);
 
-        startActivity(listIntent);
+        startActivity(productViewIntent);
         }
 
 
@@ -71,11 +75,13 @@ public class SearchActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
         }
 
         @Override
         protected void onPostExecute(Result result) {
             super.onPostExecute(result);
+
         }
 
         @Override
