@@ -30,7 +30,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <include android:id="@+id/nestedProductLayout" layout="@layout/product"
-        bind:product="@{product}"/>
+        bind:product="@{product}"></include>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
