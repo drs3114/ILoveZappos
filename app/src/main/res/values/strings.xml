@@ -21,4 +21,9 @@
     <string name="action_share">Share</string>
     <string name="action_reply">Reply</string>
     <string name="title_activity_product">ProductActivity</string>
+    <string name="cart">Cart</string>
+    <string name="shareProduct">Share</string>
+    <string name="discover_nearby_devices">Discover nearby devices</string>
+    <string name="share_device_information">Share device information</string>
+    <string name="sharedProduct">sharedProduct</string>
 </resources>

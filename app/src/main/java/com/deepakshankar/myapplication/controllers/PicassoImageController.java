@@ -31,7 +31,11 @@ public class PicassoImageController {
     /**
      * This method is used to load the
      */
+    public void resizeAndloadImage(int width, int height) {
+        Picasso.with(this.context).load(imageUrl).resize(width,height).into(imageView);
+    }
+
     public void loadImage() {
-        Picasso.with(this.context).load(imageUrl).resize(600,600).into(imageView);
+        Picasso.with(this.context).load(imageUrl).into(imageView);
     }
 }

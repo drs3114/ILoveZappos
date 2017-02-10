@@ -181,4 +181,23 @@ public class Product implements Serializable {
     public String toString() {
         return this.productName;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Product product = (Product) o;
+
+        if (productId != product.productId) return false;
+        return productUrl != null ? productUrl.equals(product.productUrl) : product.productUrl == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = productId;
+        result = 31 * result + (productUrl != null ? productUrl.hashCode() : 0);
+        return result;
+    }
 }

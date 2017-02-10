@@ -1,13 +1,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:bind="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
     <data>
+
         <variable
             name="product"
-            type="com.deepakshankar.myapplication.model.Product"/>
+            type="com.deepakshankar.myapplication.model.Product" />
     </data>
-    <android.support.design.widget.CoordinatorLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    <android.support.design.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,7 +29,9 @@
 
         </android.support.design.widget.AppBarLayout>
 
-        <include android:id="@+id/nestedProductLayout" layout="@layout/product"
+        <include
+            android:id="@+id/nestedProductLayout"
+            layout="@layout/product"
             bind:product="@{product}"></include>
 
         <android.support.design.widget.FloatingActionButton
@@ -37,10 +40,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_margin="@dimen/fab_margin"
+            app:fabSize="normal"
             app:layout_anchor="@+id/nestedProductLayout"
-            app:srcCompat="@drawable/ic_zappos_cart"
             app:layout_anchorGravity="center_vertical|right"
-            app:fabSize="normal" />
+            app:srcCompat="@drawable/ic_zappos_cart" />
 
 
     </android.support.design.widget.CoordinatorLayout>

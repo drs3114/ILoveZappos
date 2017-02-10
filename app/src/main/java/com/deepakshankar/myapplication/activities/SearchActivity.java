@@ -8,14 +8,17 @@ import android.os.Bundle;
 
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.deepakshankar.myapplication.R;
 import com.deepakshankar.myapplication.controllers.rest.RestController;
+import com.deepakshankar.myapplication.model.Cart;
 import com.deepakshankar.myapplication.model.Result;
 
 import java.util.concurrent.ExecutionException;
@@ -24,22 +27,24 @@ import java.util.concurrent.ExecutionException;
 public class SearchActivity extends AppCompatActivity {
 
     Result result;
+    Cart cart;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)  {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setSupportActionBar();
-
         setContentView(R.layout.activity_search);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Search Zappos!");
         setSupportActionBar(toolbar);
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        cart = (Cart) bundle.getSerializable("cart");
     }
 
-    public void searchZappos(View view)  {
+    public void searchZappos(View view) {
         EditText searchText = (EditText) findViewById(R.id.search_term);
         String term = searchText.getText().toString();
-        Log.d("SearchActivity","Search term: "+term);
+        Log.d("SearchActivity", "Search term: " + term);
         try {
             result = new SearchActivityHelper().execute(term).get();
         } catch (InterruptedException e) {
@@ -48,27 +53,28 @@ public class SearchActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        if(result==null){
-            Toast.makeText(this,"No results Found!",Toast.LENGTH_LONG).show();
-        }
-        else{
-            Log.d("SearchActivity","Result Found Total: "+result.getTotalResultCount());
-            Intent productViewIntent = new Intent(getBaseContext(),ProductViewActivity.class);
-            productViewIntent.putExtra("zapposResults",result);
+        if (result == null) {
+            Toast.makeText(this, "No results Found!", Toast.LENGTH_LONG).show();
+        } else {
+            Log.d("SearchActivity", "Result Found Total: " + result.getTotalResultCount());
+            Intent productViewIntent = new Intent(getBaseContext(), ProductViewActivity.class);
+            productViewIntent.putExtra("zapposResults", result);
+            productViewIntent.putExtra("cart", cart);
 
-        startActivity(productViewIntent);
+            startActivity(productViewIntent);
         }
 
 
     }
 
-    private class SearchActivityHelper extends AsyncTask<String, Void, Result>{
+    private class SearchActivityHelper extends AsyncTask<String, Void, Result> {
         RestController restController = new RestController();
         Result result;
+
         @Override
         protected Result doInBackground(String... params) {
             String term = params[0];
-            result=restController.fetch(term);
+            result = restController.fetch(term);
             return result;
         }
 
@@ -90,4 +96,26 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.search_view_menu, menu);
+        return true;
+
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.viewShared:
+                Intent viewSharedIntent = new Intent(this,GetSharedProductsActivity.class);
+                viewSharedIntent.putExtra("zapposResults", result);
+                viewSharedIntent.putExtra("cart", cart);
+                startActivity(viewSharedIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+}

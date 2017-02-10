@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/shareProduct"
+        android:icon="@drawable/ic_action_stat_share"
+        android:title="@string/shareProduct"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/cartItems"
+        android:icon="@drawable/ic_zappos_cart"
+        android:title="@string/cart"
+        app:showAsAction="always" />
+
+</menu>

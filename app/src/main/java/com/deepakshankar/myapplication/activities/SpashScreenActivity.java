@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.deepakshankar.myapplication.R;
+import com.deepakshankar.myapplication.model.Cart;
 
 public class SpashScreenActivity extends AppCompatActivity {
 
@@ -33,7 +34,9 @@ public class SpashScreenActivity extends AppCompatActivity {
             public void onAnimationEnd(Animation animation) {
                 appImage.startAnimation(fadeOut);
                 finish();
+                Cart cart = new Cart();
                 Intent searchIntent = new Intent(getBaseContext(),SearchActivity.class);
+                searchIntent.putExtra("cart",cart);
                 startActivity(searchIntent);
 
             }

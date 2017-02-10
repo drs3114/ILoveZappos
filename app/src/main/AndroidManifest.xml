@@ -32,8 +32,29 @@
         <activity
             android:name=".activities.ProductViewActivity"
             android:label="@string/title_activity_list"
-            android:parentActivityName=".activities.SearchActivity"
-            >
+            android:parentActivityName=".activities.SearchActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.deepakshankar.myapplication.activities.SearchActivity" />
+        </activity>
+        <activity
+            android:name=".activities.ShareActivity"
+            android:label="ShareActivity"
+            android:parentActivityName=".activities.ProductViewActivity">
+            <meta-data
+                android:name="anndroid.support.PARENT_ACTIVITY"
+                android:value="com.deepakshankar.myapplication.activities.ProductViewActivity" />
+        </activity>
+        <activity
+            android:name=".activities.CartActivity"
+            android:label="CartActivity"
+            android:parentActivityName=".activities.ProductViewActivity">
+            <meta-data
+                android:name="anndroid.support.PARENT_ACTIVITY"
+                android:value="com.deepakshankar.myapplication.activities.ProductViewActivity" />
+        </activity>
+        <activity android:name=".activities.GetSharedProductsActivity" />
+        <activity android:name=".activities.ViewSharedActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.deepakshankar.myapplication.activities.SearchActivity" />

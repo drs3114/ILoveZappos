@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -9,8 +9,7 @@
             type="com.deepakshankar.myapplication.model.Product" />
     </data>
 
-    <RelativeLayout
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/content_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,62 +19,61 @@
         tools:showIn="@layout/activity_product_view">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginLeft="110dp"
-            android:layout_marginStart="110dp"
             android:id="@+id/productImage"
-            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="110dp"
+            android:layout_marginStart="110dp" />
 
         <TextView
 
+            android:id="@+id/productName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="14dp"
-            android:id="@+id/productName"
-            android:textSize="10sp"
-            android:textAllCaps="true"
-            android:textStyle="normal|bold"
             android:textAlignment="center"
-            android:textColor="@color/cardview_light_background" />
+            android:textAllCaps="true"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="20sp"
+            android:textStyle="normal|bold" />
 
         <TextView
-            android:text="@{`Original Price: `+product.originalPrice}"
+            android:id="@+id/originalPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/productName"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="123dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/productName"
             android:layout_marginEnd="123dp"
+            android:layout_marginRight="123dp"
             android:layout_marginTop="38dp"
-            android:id="@+id/originalPrice"
             android:textSize="24sp" />
 
         <TextView
-            android:text="@{`Discount: `+product.percentOff}"
+
+            android:id="@+id/discount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_alignLeft="@+id/originalPrice"
             android:layout_alignStart="@+id/originalPrice"
-            android:id="@+id/discount"
+            android:layout_centerVertical="true"
             android:textSize="24sp" />
 
         <TextView
-            android:text="@{`Price: `+product.price}"
+
+            android:id="@+id/productPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/discount"
             android:layout_alignParentBottom="true"
             android:layout_alignRight="@+id/discount"
-            android:layout_alignEnd="@+id/discount"
             android:layout_marginBottom="58dp"
-            android:id="@+id/productPrice"
             android:textSize="24sp" />
     </RelativeLayout>
 </layout>
