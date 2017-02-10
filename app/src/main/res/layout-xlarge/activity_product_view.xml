@@ -6,7 +6,7 @@
 
         <variable
             name="product"
-            type="com.deepakshankar.myapplication.model.Product" />
+            type="com.deepakshankar.ilovezappos.model.Product" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context="com.deepakshankar.myapplication.activities.ProductViewActivity">
+        tools:context="com.deepakshankar.ilovezappos.activities.ProductViewActivity">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"

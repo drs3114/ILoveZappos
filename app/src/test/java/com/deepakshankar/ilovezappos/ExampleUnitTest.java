@@ -1,4 +1,4 @@
-package com.deepakshankar.myapplication;
+package com.deepakshankar.ilovezappos;
 
 import org.junit.Test;
 

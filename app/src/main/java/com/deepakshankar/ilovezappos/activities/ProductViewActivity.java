@@ -1,9 +1,8 @@
-package com.deepakshankar.myapplication.activities;
+package com.deepakshankar.ilovezappos.activities;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,13 +16,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.deepakshankar.myapplication.R;
-import com.deepakshankar.myapplication.controllers.PicassoImageController;
-import com.deepakshankar.myapplication.databinding.ActivityProductViewBinding;
-import com.deepakshankar.myapplication.model.Cart;
-import com.deepakshankar.myapplication.model.CartItem;
-import com.deepakshankar.myapplication.model.Product;
-import com.deepakshankar.myapplication.model.Result;
+import com.deepakshankar.ilovezappos.R;
+import com.deepakshankar.ilovezappos.controllers.PicassoImageController;
+import com.deepakshankar.ilovezappos.databinding.ActivityProductViewBinding;
+import com.deepakshankar.ilovezappos.model.Cart;
+import com.deepakshankar.ilovezappos.model.CartItem;
+import com.deepakshankar.ilovezappos.model.Product;
+import com.deepakshankar.ilovezappos.model.Result;
 
 import java.util.List;
 
@@ -135,6 +134,7 @@ public class ProductViewActivity extends AppCompatActivity {
             case android.R.id.home:
                 Intent searchIntent = new Intent(getBaseContext(), SearchActivity.class);
                 searchIntent.putExtra("cart", cart);
+                searchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(searchIntent);
                 return true;
             case R.id.shareProduct:

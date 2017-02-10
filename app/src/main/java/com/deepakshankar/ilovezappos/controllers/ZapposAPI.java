@@ -1,6 +1,6 @@
-package com.deepakshankar.myapplication.controllers.rest;
+package com.deepakshankar.ilovezappos.controllers;
 
-import com.deepakshankar.myapplication.model.Result;
+import com.deepakshankar.ilovezappos.model.Result;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

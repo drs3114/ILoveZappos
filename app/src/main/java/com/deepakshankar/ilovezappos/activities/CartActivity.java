@@ -1,4 +1,4 @@
-package com.deepakshankar.myapplication.activities;
+package com.deepakshankar.ilovezappos.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,10 +16,10 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.deepakshankar.myapplication.R;
-import com.deepakshankar.myapplication.controllers.PicassoImageController;
-import com.deepakshankar.myapplication.model.Cart;
-import com.deepakshankar.myapplication.model.CartItem;
+import com.deepakshankar.ilovezappos.R;
+import com.deepakshankar.ilovezappos.controllers.PicassoImageController;
+import com.deepakshankar.ilovezappos.model.Cart;
+import com.deepakshankar.ilovezappos.model.CartItem;
 
 import java.util.List;
 
@@ -58,6 +58,7 @@ public class CartActivity extends AppCompatActivity {
                 Intent parentActivity = new Intent(this, ProductViewActivity.class);
                 parentActivity.putExtra("zapposResults", getIntent().getExtras().getSerializable("zapposResults"));
                 parentActivity.putExtra("cart",cart);
+                parentActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(parentActivity);
                 return true;
         }

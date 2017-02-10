@@ -1,4 +1,4 @@
-package com.deepakshankar.myapplication.model;
+package com.deepakshankar.ilovezappos.model;
 
 import junit.framework.TestCase;
 

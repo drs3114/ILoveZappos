@@ -1,4 +1,4 @@
-package com.deepakshankar.myapplication.activities;
+package com.deepakshankar.ilovezappos.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,12 +16,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
-import android.widget.ListView;
 import android.widget.Toast;
 
-import com.deepakshankar.myapplication.R;
-import com.deepakshankar.myapplication.model.DeviceMessage;
-import com.deepakshankar.myapplication.model.Result;
+import com.deepakshankar.ilovezappos.R;
+import com.deepakshankar.ilovezappos.model.PayloadMessage;
+import com.deepakshankar.ilovezappos.model.Result;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
@@ -33,9 +32,6 @@ import com.google.android.gms.nearby.messages.PublishCallback;
 import com.google.android.gms.nearby.messages.PublishOptions;
 import com.google.android.gms.nearby.messages.Strategy;
 
-
-import java.util.ArrayList;
-import java.util.List;
 
 import java.util.UUID;
 
@@ -57,7 +53,7 @@ public class ShareActivity extends AppCompatActivity implements GoogleApiClient.
 
     /**
      * Creates a UUID and saves it to {@link SharedPreferences}. The UUID is added to the published
-     * message to avoid it being undelivered due to de-duplication. See {@link DeviceMessage} for
+     * message to avoid it being undelivered due to de-duplication. See {@link PayloadMessage} for
      * details.
      */
     private static String getUUID(SharedPreferences sharedPreferences) {
@@ -100,7 +96,7 @@ public class ShareActivity extends AppCompatActivity implements GoogleApiClient.
         Result payload = (Result) bundle.getSerializable("zapposResults");
         // Build the message that is going to be published. This contains the device name and a
         // UUID.
-        mPubMessage = DeviceMessage.newNearbyMessage(getUUID(getSharedPreferences(
+        mPubMessage = PayloadMessage.newNearbyMessage(getUUID(getSharedPreferences(
                 getApplicationContext().getPackageName(), Context.MODE_PRIVATE)), payload);
 
         buildGoogleApiClient();

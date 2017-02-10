@@ -1,9 +1,8 @@
-package com.deepakshankar.myapplication.controllers.rest;
+package com.deepakshankar.ilovezappos.controllers;
 
 import android.util.Log;
-import android.widget.Toast;
 
-import com.deepakshankar.myapplication.model.Result;
+import com.deepakshankar.ilovezappos.model.Result;
 
 import java.io.IOException;
 

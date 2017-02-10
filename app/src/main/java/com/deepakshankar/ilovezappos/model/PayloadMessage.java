@@ -1,4 +1,4 @@
-package com.deepakshankar.myapplication.model;
+package com.deepakshankar.ilovezappos.model;
 
 import android.os.Build;
 
@@ -13,7 +13,7 @@ import java.nio.charset.Charset;
  * to the Message payload, which helps Nearby distinguish between multiple devices with
  * the same model name.
  */
-public class DeviceMessage {
+public class PayloadMessage {
     private static final Gson gson = new Gson();
 
     private final String mUUID;
@@ -24,27 +24,27 @@ public class DeviceMessage {
      * Builds a new {@link Message} object using a unique identifier.
      */
     public static Message newNearbyMessage(String instanceId, Result payload) {
-        DeviceMessage deviceMessage = new DeviceMessage(instanceId, payload);
-        return new Message(gson.toJson(deviceMessage).getBytes(Charset.forName("UTF-8")));
+        PayloadMessage payloadMessage = new PayloadMessage(instanceId, payload);
+        return new Message(gson.toJson(payloadMessage).getBytes(Charset.forName("UTF-8")));
     }
 
     /**
-     * Creates a {@code DeviceMessage} object from the string used to construct the payload to a
+     * Creates a {@code PayloadMessage} object from the string used to construct the payload to a
      * {@code Nearby} {@code Message}.
      */
-    public static DeviceMessage fromNearbyMessage(Message message) {
+    public static PayloadMessage fromNearbyMessage(Message message) {
         String nearbyMessageString = new String(message.getContent()).trim();
         return gson.fromJson(
                 (new String(nearbyMessageString.getBytes(Charset.forName("UTF-8")))),
-                DeviceMessage.class);
+                PayloadMessage.class);
     }
 
-    /*private DeviceMessage(String uuid) {
+    /*private PayloadMessage(String uuid) {
         mUUID = uuid;
         mMessageBody = Build.MODEL;
         // TODO(developer): add other fields that must be included in the Nearby Message payload.
     }*/
-    private DeviceMessage(String uuid, Result result) {
+    private PayloadMessage(String uuid, Result result) {
         mUUID = uuid;
         mMessageBody = Build.MODEL;
         payload = result;

@@ -1,4 +1,4 @@
-package com.deepakshankar.myapplication.activities;
+package com.deepakshankar.ilovezappos.activities;
 
 
 import android.content.Intent;
@@ -16,10 +16,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.deepakshankar.myapplication.R;
-import com.deepakshankar.myapplication.controllers.rest.RestController;
-import com.deepakshankar.myapplication.model.Cart;
-import com.deepakshankar.myapplication.model.Result;
+import com.deepakshankar.ilovezappos.R;
+import com.deepakshankar.ilovezappos.controllers.RestController;
+import com.deepakshankar.ilovezappos.model.Cart;
+import com.deepakshankar.ilovezappos.model.Result;
 
 import java.util.concurrent.ExecutionException;
 

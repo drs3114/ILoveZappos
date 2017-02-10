@@ -1,4 +1,4 @@
-package com.deepakshankar.myapplication.activities;
+package com.deepakshankar.ilovezappos.activities;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -9,11 +9,11 @@ import android.text.Html;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-import com.deepakshankar.myapplication.R;
-import com.deepakshankar.myapplication.controllers.PicassoImageController;
-import com.deepakshankar.myapplication.databinding.ActivityViewSharedBinding;
-import com.deepakshankar.myapplication.model.Product;
-import com.deepakshankar.myapplication.model.Result;
+import com.deepakshankar.ilovezappos.R;
+import com.deepakshankar.ilovezappos.controllers.PicassoImageController;
+import com.deepakshankar.ilovezappos.databinding.ActivityViewSharedBinding;
+import com.deepakshankar.ilovezappos.model.Product;
+import com.deepakshankar.ilovezappos.model.Result;
 
 public class ViewSharedActivity extends AppCompatActivity {
     Result result;
@@ -53,6 +53,7 @@ public class ViewSharedActivity extends AppCompatActivity {
                 Intent searchIntent = new Intent(this,SearchActivity.class);
                 searchIntent.putExtra("zapposResults", result);
                 searchIntent.putExtra("cart", getIntent().getExtras().getSerializable("cart"));
+                searchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(searchIntent);
                 return true;
             default:

@@ -1,4 +1,4 @@
-package com.deepakshankar.myapplication.activities;
+package com.deepakshankar.ilovezappos.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,8 +7,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.deepakshankar.myapplication.R;
-import com.deepakshankar.myapplication.model.Cart;
+import com.deepakshankar.ilovezappos.R;
+import com.deepakshankar.ilovezappos.model.Cart;
 
 public class SpashScreenActivity extends AppCompatActivity {
 

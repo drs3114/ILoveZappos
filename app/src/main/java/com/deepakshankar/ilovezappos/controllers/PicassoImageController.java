@@ -1,4 +1,4 @@
-package com.deepakshankar.myapplication.controllers;
+package com.deepakshankar.ilovezappos.controllers;
 
 import android.content.Context;
 import android.widget.ImageView;

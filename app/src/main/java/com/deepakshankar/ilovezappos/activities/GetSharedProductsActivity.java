@@ -1,4 +1,4 @@
-package com.deepakshankar.myapplication.activities;
+package com.deepakshankar.ilovezappos.activities;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -11,9 +11,9 @@ import android.util.Log;
 import android.view.View;
 
 
-import com.deepakshankar.myapplication.R;
-import com.deepakshankar.myapplication.model.DeviceMessage;
-import com.deepakshankar.myapplication.model.Result;
+import com.deepakshankar.ilovezappos.R;
+import com.deepakshankar.ilovezappos.model.PayloadMessage;
+import com.deepakshankar.ilovezappos.model.Result;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
@@ -27,7 +27,7 @@ import com.google.android.gms.nearby.messages.SubscribeOptions;
 
 public class GetSharedProductsActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    private static final String TAG = ShareActivity.class.getSimpleName();
+    private static final String TAG = GetSharedProductsActivity.class.getSimpleName();
 
     private static final int TTL_IN_SECONDS = 3 * 60; // Three minutes.
 
@@ -45,13 +45,13 @@ public class GetSharedProductsActivity extends AppCompatActivity implements Goog
     /**
      * The entry point to Google Play Services.
      */
-    private GoogleApiClient mGoogleApiClient;
+    private GoogleApiClient googleApiClient;
 
 
     /**
      * A {@link MessageListener} for processing messages from nearby devices.
      */
-    private MessageListener mMessageListener;
+    private MessageListener messageListener;
 
 
     @Override
@@ -60,16 +60,15 @@ public class GetSharedProductsActivity extends AppCompatActivity implements Goog
         setContentView(R.layout.activity_get_shared_products);
 
 
-        mMessageListener = new MessageListener() {
+        messageListener = new MessageListener() {
             @Override
             public void onFound(final Message message) {
-                Result result = DeviceMessage.fromNearbyMessage(message).getPayload();
-
+                Result result = PayloadMessage.fromNearbyMessage(message).getPayload();
                 unsubscribe();
-
                 Intent viewIntent = new Intent(getBaseContext(), ViewSharedActivity.class);
                 viewIntent.putExtra("cart", getIntent().getExtras().getSerializable("cart"));
                 viewIntent.putExtra("zapposResults", result);
+                viewIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(viewIntent);
             }
 
@@ -90,10 +89,10 @@ public class GetSharedProductsActivity extends AppCompatActivity implements Goog
      * immediately, and disconnects automatically in {@link AppCompatActivity#onStop}.
      */
     private void buildGoogleApiClient() {
-        if (mGoogleApiClient != null) {
+        if (googleApiClient != null) {
             return;
         }
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
+        googleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Nearby.MESSAGES_API)
                 .addConnectionCallbacks(this)
                 .enableAutoManage(this, this)
@@ -141,7 +140,7 @@ public class GetSharedProductsActivity extends AppCompatActivity implements Goog
                     }
                 }).build();
 
-        Nearby.Messages.subscribe(mGoogleApiClient, mMessageListener, options)
+        Nearby.Messages.subscribe(googleApiClient, messageListener, options)
                 .setResultCallback(new ResultCallback<Status>() {
                     @Override
                     public void onResult(@NonNull Status status) {
@@ -162,7 +161,7 @@ public class GetSharedProductsActivity extends AppCompatActivity implements Goog
      */
     private void unsubscribe() {
         Log.i(TAG, "Unsubscribing.");
-        Nearby.Messages.unsubscribe(mGoogleApiClient, mMessageListener);
+        Nearby.Messages.unsubscribe(googleApiClient, messageListener);
     }
 
 

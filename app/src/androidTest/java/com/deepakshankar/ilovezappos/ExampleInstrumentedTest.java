@@ -1,4 +1,4 @@
-package com.deepakshankar.myapplication;
+package com.deepakshankar.ilovezappos;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

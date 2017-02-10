@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.deepakshankar.myapplication">
+    package="com.deepakshankar.ilovezappos">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -15,14 +15,14 @@
             android:name="com.google.android.nearby.messages.API_KEY"
             android:value="AIzaSyBy0Vpjuyegu0ekMKFOiabphjamYmuB1n0" />
 
-        <activity android:name=".activities.SpashScreenActivity">
+        <activity android:name="com.deepakshankar.ilovezappos.activities.SpashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.SearchActivity">
+        <activity android:name="com.deepakshankar.ilovezappos.activities.SearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,34 +30,34 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.ProductViewActivity"
+            android:name="com.deepakshankar.ilovezappos.activities.ProductViewActivity"
             android:label="@string/title_activity_list"
-            android:parentActivityName=".activities.SearchActivity">
+            android:parentActivityName="com.deepakshankar.ilovezappos.activities.SearchActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.deepakshankar.myapplication.activities.SearchActivity" />
+                android:value="com.deepakshankar.ilovezappos.activities.SearchActivity" />
         </activity>
         <activity
-            android:name=".activities.ShareActivity"
+            android:name="com.deepakshankar.ilovezappos.activities.ShareActivity"
             android:label="ShareActivity"
-            android:parentActivityName=".activities.ProductViewActivity">
+            android:parentActivityName="com.deepakshankar.ilovezappos.activities.ProductViewActivity">
             <meta-data
                 android:name="anndroid.support.PARENT_ACTIVITY"
                 android:value="com.deepakshankar.myapplication.activities.ProductViewActivity" />
         </activity>
         <activity
-            android:name=".activities.CartActivity"
+            android:name="com.deepakshankar.ilovezappos.activities.CartActivity"
             android:label="CartActivity"
-            android:parentActivityName=".activities.ProductViewActivity">
+            android:parentActivityName="com.deepakshankar.ilovezappos.activities.ProductViewActivity">
             <meta-data
                 android:name="anndroid.support.PARENT_ACTIVITY"
                 android:value="com.deepakshankar.myapplication.activities.ProductViewActivity" />
         </activity>
-        <activity android:name=".activities.GetSharedProductsActivity" />
-        <activity android:name=".activities.ViewSharedActivity">
+        <activity android:name="com.deepakshankar.ilovezappos.activities.GetSharedProductsActivity" />
+        <activity android:name="com.deepakshankar.ilovezappos.activities.ViewSharedActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.deepakshankar.myapplication.activities.SearchActivity" />
+                android:value="com.deepakshankar.ilovezappos.activities.SearchActivity" />
         </activity>
     </application>
 
