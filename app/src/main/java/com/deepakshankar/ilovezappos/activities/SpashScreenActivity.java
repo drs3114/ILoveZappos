@@ -10,6 +10,10 @@ import android.widget.ImageView;
 import com.deepakshankar.ilovezappos.R;
 import com.deepakshankar.ilovezappos.model.Cart;
 
+/**
+ * This is the activity that is used to display the splash screen before the app begins.
+ * @author Deepak Shankar
+ */
 public class SpashScreenActivity extends AppCompatActivity {
 
     @Override

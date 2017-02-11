@@ -25,6 +25,10 @@ import com.google.android.gms.nearby.messages.Strategy;
 import com.google.android.gms.nearby.messages.SubscribeCallback;
 import com.google.android.gms.nearby.messages.SubscribeOptions;
 
+/**
+ * This is the activity that is used to ge tthe shared product from the nearBy api and display it on the viewrs screen.
+ * @author Deepak Shankar
+ */
 public class GetSharedProductsActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private static final String TAG = GetSharedProductsActivity.class.getSimpleName();
@@ -63,7 +67,7 @@ public class GetSharedProductsActivity extends AppCompatActivity implements Goog
         messageListener = new MessageListener() {
             @Override
             public void onFound(final Message message) {
-                Result result = PayloadMessage.fromNearbyMessage(message).getPayload();
+                Result result = PayloadMessage.receive(message).getPayload();
                 unsubscribe();
                 Intent viewIntent = new Intent(getBaseContext(), ViewSharedActivity.class);
                 viewIntent.putExtra("cart", getIntent().getExtras().getSerializable("cart"));

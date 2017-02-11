@@ -16,6 +16,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by DeepakShankar on 2/3/2017.
  */
 
+/**
+ * This is the REST API controller that is used to get the results from the Zappos API using retrofit.
+ * @author Deepak Shankar
+ */
 public class RestController implements Callback<Result> {
 
     private static final String API = "https://api.zappos.com";

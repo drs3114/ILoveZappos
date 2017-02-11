@@ -96,7 +96,7 @@ public class ShareActivity extends AppCompatActivity implements GoogleApiClient.
         Result payload = (Result) bundle.getSerializable("zapposResults");
         // Build the message that is going to be published. This contains the device name and a
         // UUID.
-        mPubMessage = PayloadMessage.newNearbyMessage(getUUID(getSharedPreferences(
+        mPubMessage = PayloadMessage.create(getUUID(getSharedPreferences(
                 getApplicationContext().getPackageName(), Context.MODE_PRIVATE)), payload);
 
         buildGoogleApiClient();

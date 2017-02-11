@@ -24,6 +24,10 @@ import com.deepakshankar.ilovezappos.model.Result;
 import java.util.concurrent.ExecutionException;
 
 
+/**
+ * This is the activity that is used to search the zappos api and get the products.
+ * @author Deepak Shankar
+ */
 public class SearchActivity extends AppCompatActivity {
 
     Result result;

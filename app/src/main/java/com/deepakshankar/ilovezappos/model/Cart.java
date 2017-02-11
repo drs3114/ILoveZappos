@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This is the model for the cart to hold the @{@link CartItem}s
  * Created by DeepakShankar on 2/7/2017.
  */
 

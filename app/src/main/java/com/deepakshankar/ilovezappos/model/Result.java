@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
+ * This is the class that is used as a POJO class to hold the JSON object that ZAppos API returns.
  * Created by DeepakShankar on 1/28/2017.
  */
 

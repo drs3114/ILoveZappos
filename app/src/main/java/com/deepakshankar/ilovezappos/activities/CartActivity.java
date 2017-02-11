@@ -23,6 +23,10 @@ import com.deepakshankar.ilovezappos.model.CartItem;
 
 import java.util.List;
 
+/**
+ * This is the activity that is used to get the cart.
+ * @author Deepak Shankar
+ */
 public class CartActivity extends AppCompatActivity {
     Cart cart;
     List<CartItem> items;
@@ -65,6 +69,10 @@ public class CartActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * This class is used to populate the list in the cart layout.
+     * @param <CartItem>
+     */
     public class CartAdapter<CartItem> extends ArrayAdapter<CartItem> {
         Context context;
         int id;

@@ -15,6 +15,10 @@ import com.deepakshankar.ilovezappos.databinding.ActivityViewSharedBinding;
 import com.deepakshankar.ilovezappos.model.Product;
 import com.deepakshankar.ilovezappos.model.Result;
 
+/**
+ * This is the activity that displays the product on the viewers screen after the nearby API captures the shared product.
+ * @author Deepak Shankar
+ */
 public class ViewSharedActivity extends AppCompatActivity {
     Result result;
     Product product;

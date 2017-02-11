@@ -3,6 +3,7 @@ package com.deepakshankar.ilovezappos.model;
 import java.io.Serializable;
 
 /**
+ * This is the class that will defice the item that goes into the @{@link Cart}
  * Created by DeepakShankar on 2/6/2017.
  */
 

@@ -9,7 +9,11 @@ import com.squareup.picasso.Picasso;
  * Created by DeepakShankar on 2/5/2017.
  */
 
-
+/**
+ * This is the Controller class that is used to ge the image using the Picasso API from square.
+ * @author Deepak Shankar
+ *
+ */
 public class PicassoImageController {
     ImageView imageView;
     Context context;
