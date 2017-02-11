@@ -14,7 +14,6 @@ import android.text.TextUtils;
 
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 
 import android.widget.Toast;
 
@@ -27,7 +26,6 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.nearby.Nearby;
 import com.google.android.gms.nearby.messages.Message;
-import com.google.android.gms.nearby.messages.MessageListener;
 import com.google.android.gms.nearby.messages.PublishCallback;
 import com.google.android.gms.nearby.messages.PublishOptions;
 import com.google.android.gms.nearby.messages.Strategy;
@@ -68,22 +66,13 @@ public class ShareActivity extends AppCompatActivity implements GoogleApiClient.
     /**
      * The entry point to Google Play Services.
      */
-    private GoogleApiClient mGoogleApiClient;
+    private GoogleApiClient googleApiClient;
 
     /**
      * The {@link Message} object used to broadcast information about the device to nearby devices.
      */
-    private Message mPubMessage;
+    private Message message;
 
-    /**
-     * A {@link MessageListener} for processing messages from nearby devices.
-     */
-    private MessageListener mMessageListener;
-
-    /**
-     * Adapter for working with messages from nearby publishers.
-     */
-    private ArrayAdapter<String> mNearbyDevicesArrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +85,7 @@ public class ShareActivity extends AppCompatActivity implements GoogleApiClient.
         Result payload = (Result) bundle.getSerializable("zapposResults");
         // Build the message that is going to be published. This contains the device name and a
         // UUID.
-        mPubMessage = PayloadMessage.create(getUUID(getSharedPreferences(
+        message = PayloadMessage.create(getUUID(getSharedPreferences(
                 getApplicationContext().getPackageName(), Context.MODE_PRIVATE)), payload);
 
         buildGoogleApiClient();
@@ -110,10 +99,10 @@ public class ShareActivity extends AppCompatActivity implements GoogleApiClient.
      * immediately, and disconnects automatically in {@link AppCompatActivity#onStop}.
      */
     private void buildGoogleApiClient() {
-        if (mGoogleApiClient != null) {
+        if (googleApiClient != null) {
             return;
         }
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
+        googleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Nearby.MESSAGES_API)
                 .addConnectionCallbacks(this)
                 .enableAutoManage(this, this)
@@ -161,16 +150,15 @@ public class ShareActivity extends AppCompatActivity implements GoogleApiClient.
                     }
                 }).build();
 
-        Nearby.Messages.publish(mGoogleApiClient, mPubMessage, options)
+        Nearby.Messages.publish(googleApiClient, message, options)
                 .setResultCallback(new ResultCallback<Status>() {
                     @Override
                     public void onResult(@NonNull Status status) {
                         if (status.isSuccess()) {
+                            Toast.makeText(getBaseContext(),"Shared the product successfully!",Toast.LENGTH_LONG).show();
                             Log.i(TAG, "Published successfully.");
-                            Toast.makeText(getBaseContext(), "Sharing with the below devices...", Toast.LENGTH_LONG).show();
                         } else {
                             logAndShowSnackbar("Could not publish, status = " + status);
-                            //mPublishSwitch.setChecked(false);
                         }
                     }
                 });
@@ -182,7 +170,7 @@ public class ShareActivity extends AppCompatActivity implements GoogleApiClient.
      */
     private void unpublish() {
         Log.i(TAG, "Unpublishing.");
-        Nearby.Messages.unpublish(mGoogleApiClient, mPubMessage);
+        Nearby.Messages.unpublish(googleApiClient, message);
     }
 
     /**
